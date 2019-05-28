@@ -1,0 +1,16 @@
+#!/bin/bash
+timer_usage() {
+  echo "Usage: $0 <seconds>"
+  exit 1
+}
+
+if [ "x$1" == x ]
+then
+  timer_usage
+elif [ "$1" -le 0 ]
+then
+  timer_usage
+else
+  sleep $1
+  /usr/bin/osascript -e "display notification \"$1 seconds elapsed\" with title \"Timer Expired\" sound name \"Glass\""
+fi
